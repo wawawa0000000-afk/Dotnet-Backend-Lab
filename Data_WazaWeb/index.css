@@ -1,0 +1,216 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+/*外部フォント導入に対する記述*/
+@font-face {
+    font-family: "titlefont";
+    src: url("image/aoyagireisyosimo_ttf_2_01/aoyagireisyosimo_ttf_2_01.ttf")format("truetype");
+    font-display: swap;
+}
+
+
+/* 全体のリセットとベーススタイル (Flexboxによるレスポンシブ化・スクロール不要なサイズ設定) */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.05em;
+    overflow-x: hidden;
+}
+
+/* ページ読み込み時に全体がふんわり表示されるアニメーション */
+body {
+    animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* -------------------------------------
+   Header / Navigation
+   ------------------------------------- */
+header {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    user-select: none;
+    font-family: "titlefont", serif;
+    font-size: 55px;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+    padding: 10px 30px;
+    border-radius: 8px;
+    margin: 0 0 40px 0;
+    letter-spacing: 0.3em;
+    transition: all 0.5s ease;
+}
+
+h1:hover {
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+    text-shadow: none;
+}
+
+nav {
+    display: flex;
+    gap: 60px; /* 余白をフレックスボックスで自動制御 */
+    margin-bottom: 60px;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+}
+
+nav a {
+    position: relative;
+    padding: 5px 0;
+    color: #888888;
+    transition: color 0.4s ease;
+}
+
+/* ホバー時に下線がシームレスに引かれる演出 */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: #ffffff;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* -------------------------------------
+   Main Content Area
+   ------------------------------------- */
+main {
+    flex: 1; /* フッターを常に最下部に押し下げるため */
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* 共通のテキストスタイル */
+.note-text {
+    font-size: 14px;
+    line-height: 2.5;
+    text-align: center;
+    color: #aaaaaa;
+    font-weight: 300;
+}
+
+/* Products 用 */
+.products-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.product-item p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: #dddddd;
+}
+
+.product-item img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border: 1px solid #222;
+    border-radius: 4px;
+    /* うっすらとした影を落として質感を高める */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.product-item img:hover {
+    transform: scale(1.03); /* マウスホバーでわずかに拡大 */
+}
+
+/* Info 用 */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.info-item {
+    border-bottom: 1px solid #222;
+    padding-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.info-item h3 {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 2.2;
+    color: #888888;
+    font-weight: 300;
+}
+
+/* -------------------------------------
+   Footer
+   ------------------------------------- */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0 20px 0;
+    font-size: 11px;
+    color: #444444;
+    letter-spacing: 0.1em;
+}
